@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 827 366" width="827" height="366" role="img" aria-label="stlabs listing tickets in a terminal">
+  <rect x="1" y="1" width="825" height="364" rx="12" fill="#232328" stroke="#313135"/>
+  <circle cx="37" cy="33" r="7" fill="#3C3C41"/><circle cx="61" cy="33" r="7" fill="#3C3C41"/><circle cx="85" cy="33" r="7" fill="#3C3C41"/>
+  <g font-family="'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" xml:space="preserve" style="white-space: pre">
+        <text x="41" y="107" fill="#E97A45">$ </text><text x="63" y="107" fill="#D4D4D8">stlabs tickets list --limit 3</text>
+    <text x="41" y="137" fill="#A3A3AA">┌─────────────────────────┬───────┬───────────────────────────────┐</text>
+    <text x="41" y="167" fill="#A3A3AA">│ id                      │ state │ title                         │</text>
+    <text x="41" y="197" fill="#A3A3AA">├─────────────────────────┼───────┼───────────────────────────────┤</text>
+    <text x="41" y="227" fill="#A3A3AA">│ TKT-DUSK-MERIDIAN-1615  │ open  │ New starter needs a laptop    │</text>
+    <text x="41" y="257" fill="#A3A3AA">│ TKT-SABLE-ECHO-5512     │ open  │ VPN drops every hour          │</text>
+    <text x="41" y="287" fill="#A3A3AA">│ TKT-KESTREL-BEACON-6866 │ open  │ Printer on floor 3 is offline │</text>
+    <text x="41" y="317" fill="#A3A3AA">└─────────────────────────┴───────┴───────────────────────────────┘</text>
+  </g>
+</svg>
