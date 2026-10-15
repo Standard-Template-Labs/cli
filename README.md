@@ -1,14 +1,14 @@
 <p align="center"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/wordmark-dark.svg"><img alt="stlabs" src="assets/wordmark-light.svg" width="240"></picture></p>
 
-<p align="center">STLabs tickets in your terminal.</p>
+<p align="center">STLabs in your terminal.</p>
 
-<p align="center"><a href="https://github.com/Standard-Template-Labs/cli/releases/tag/v0.1.1"><img alt="Release v0.1.1" src="https://img.shields.io/badge/release-v0.1.1-DC5A1C?style=flat&labelColor=5A5C63"></a> <a href="https://github.com/Standard-Template-Labs/cli/releases"><img alt="macOS and Linux" src="https://img.shields.io/badge/platforms-macOS%20%7C%20Linux-2F6FED?style=flat&labelColor=5A5C63"></a> <a href="https://stlabs.com/terms"><img alt="License" src="https://img.shields.io/badge/license-STLabs%20terms-C24E17?style=flat&labelColor=5A5C63"></a></p>
+<p align="center"><a href="https://github.com/Standard-Template-Labs/cli/releases/tag/v0.1.2"><img alt="Release v0.1.2" src="https://img.shields.io/badge/release-v0.1.2-DC5A1C?style=flat&labelColor=5A5C63"></a> <a href="https://github.com/Standard-Template-Labs/cli/releases"><img alt="macOS and Linux" src="https://img.shields.io/badge/platforms-macOS%20%7C%20Linux-2F6FED?style=flat&labelColor=5A5C63"></a> <a href="https://stlabs.com/terms"><img alt="License" src="https://img.shields.io/badge/license-STLabs%20terms-C24E17?style=flat&labelColor=5A5C63"></a></p>
 
 <p align="center"><img alt="stlabs listing tickets in a terminal" src="assets/cover.svg" width="720"></p>
 
 ## About
 
-stlabs brings STLabs tickets to your terminal.
+stlabs is the command line for Standard Template Labs (STLabs).
 
 - Read, search, create and update tickets without leaving the shell.
 - Script it: JSON out, exit codes, safe retries with an idempotency key.
@@ -35,17 +35,17 @@ macOS may block the first run of an unsigned app. If it does, open System Settin
 ### macOS
 
 ```sh
-curl -fsSL -o stlabs.tar.gz https://github.com/Standard-Template-Labs/cli/releases/download/v0.1.1/stlabs-0.1.1-darwin-arm64.tar.gz
-mkdir -p ~/.local/share/stlabs/versions/0.1.1 && tar -xzf stlabs.tar.gz --strip-components=1 -C ~/.local/share/stlabs/versions/0.1.1
-mkdir -p ~/.local/bin && ln -sfn ~/.local/share/stlabs/versions/0.1.1/stlabs ~/.local/bin/stlabs
+curl -fsSL -o stlabs.tar.gz https://github.com/Standard-Template-Labs/cli/releases/download/v0.1.2/stlabs-0.1.2-darwin-arm64.tar.gz
+mkdir -p ~/.local/share/stlabs/versions/0.1.2 && tar -xzf stlabs.tar.gz --strip-components=1 -C ~/.local/share/stlabs/versions/0.1.2
+mkdir -p ~/.local/bin && ln -sfn ~/.local/share/stlabs/versions/0.1.2/stlabs ~/.local/bin/stlabs
 ```
 
 ### Linux
 
 ```sh
-curl -fsSL -o stlabs.tar.gz https://github.com/Standard-Template-Labs/cli/releases/download/v0.1.1/stlabs-0.1.1-linux-x86_64.tar.gz
-mkdir -p ~/.local/share/stlabs/versions/0.1.1 && tar -xzf stlabs.tar.gz --strip-components=1 -C ~/.local/share/stlabs/versions/0.1.1
-mkdir -p ~/.local/bin && ln -sfn ~/.local/share/stlabs/versions/0.1.1/stlabs ~/.local/bin/stlabs
+curl -fsSL -o stlabs.tar.gz https://github.com/Standard-Template-Labs/cli/releases/download/v0.1.2/stlabs-0.1.2-linux-x86_64.tar.gz
+mkdir -p ~/.local/share/stlabs/versions/0.1.2 && tar -xzf stlabs.tar.gz --strip-components=1 -C ~/.local/share/stlabs/versions/0.1.2
+mkdir -p ~/.local/bin && ln -sfn ~/.local/share/stlabs/versions/0.1.2/stlabs ~/.local/bin/stlabs
 ```
 
 </details>
@@ -151,4 +151,4 @@ Security issues: security@stlabs.com, see https://stlabs.com/security.
 
 ## License
 
-The stlabs binary is STLabs software, under the terms at https://stlabs.com/terms. The open source software bundled in it is listed, with its licenses, in THIRD_PARTY_NOTICES.md on each release.
+The stlabs binary is Standard Template Labs (STLabs) software, under the terms at https://stlabs.com/terms. The open source software bundled in it is listed, with its licenses, in THIRD_PARTY_NOTICES.md on each release.
