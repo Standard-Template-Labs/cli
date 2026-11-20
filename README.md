@@ -2,7 +2,7 @@
 
 <p align="center">STLabs in your terminal.</p>
 
-<p align="center"><a href="https://github.com/Standard-Template-Labs/cli/releases/tag/v0.2.0"><img alt="Release v0.2.0" src="https://img.shields.io/badge/release-v0.2.0-DC5A1C?style=flat&labelColor=5A5C63"></a> <a href="https://github.com/Standard-Template-Labs/cli/releases"><img alt="macOS and Linux" src="https://img.shields.io/badge/platforms-macOS%20%7C%20Linux-2F6FED?style=flat&labelColor=5A5C63"></a> <a href="https://stlabs.com/terms"><img alt="License" src="https://img.shields.io/badge/license-STLabs%20terms-C24E17?style=flat&labelColor=5A5C63"></a></p>
+<p align="center"><a href="https://github.com/Standard-Template-Labs/cli/releases/tag/v0.2.1"><img alt="Release v0.2.1" src="https://img.shields.io/badge/release-v0.2.1-DC5A1C?style=flat&labelColor=5A5C63"></a> <a href="https://github.com/Standard-Template-Labs/cli/releases"><img alt="macOS and Linux" src="https://img.shields.io/badge/platforms-macOS%20%7C%20Linux-2F6FED?style=flat&labelColor=5A5C63"></a> <a href="https://stlabs.com/terms"><img alt="License" src="https://img.shields.io/badge/license-STLabs%20terms-C24E17?style=flat&labelColor=5A5C63"></a></p>
 
 <p align="center"><img alt="stlabs listing tickets in a terminal" src="assets/cover.svg" width="720"></p>
 
@@ -35,17 +35,17 @@ macOS may block the first run of an unsigned app. If it does, open System Settin
 ### macOS
 
 ```sh
-curl -fsSL -o stlabs.tar.gz https://github.com/Standard-Template-Labs/cli/releases/download/v0.2.0/stlabs-0.2.0-darwin-arm64.tar.gz
-mkdir -p ~/.local/share/stlabs/versions/0.2.0 && tar -xzf stlabs.tar.gz --strip-components=1 -C ~/.local/share/stlabs/versions/0.2.0
-mkdir -p ~/.local/bin && ln -sfn ~/.local/share/stlabs/versions/0.2.0/stlabs ~/.local/bin/stlabs
+curl -fsSL -o stlabs.tar.gz https://github.com/Standard-Template-Labs/cli/releases/download/v0.2.1/stlabs-0.2.1-darwin-arm64.tar.gz
+mkdir -p ~/.local/share/stlabs/versions/0.2.1 && tar -xzf stlabs.tar.gz --strip-components=1 -C ~/.local/share/stlabs/versions/0.2.1
+mkdir -p ~/.local/bin && ln -sfn ~/.local/share/stlabs/versions/0.2.1/stlabs ~/.local/bin/stlabs
 ```
 
 ### Linux
 
 ```sh
-curl -fsSL -o stlabs.tar.gz https://github.com/Standard-Template-Labs/cli/releases/download/v0.2.0/stlabs-0.2.0-linux-x86_64.tar.gz
-mkdir -p ~/.local/share/stlabs/versions/0.2.0 && tar -xzf stlabs.tar.gz --strip-components=1 -C ~/.local/share/stlabs/versions/0.2.0
-mkdir -p ~/.local/bin && ln -sfn ~/.local/share/stlabs/versions/0.2.0/stlabs ~/.local/bin/stlabs
+curl -fsSL -o stlabs.tar.gz https://github.com/Standard-Template-Labs/cli/releases/download/v0.2.1/stlabs-0.2.1-linux-x86_64.tar.gz
+mkdir -p ~/.local/share/stlabs/versions/0.2.1 && tar -xzf stlabs.tar.gz --strip-components=1 -C ~/.local/share/stlabs/versions/0.2.1
+mkdir -p ~/.local/bin && ln -sfn ~/.local/share/stlabs/versions/0.2.1/stlabs ~/.local/bin/stlabs
 ```
 
 </details>
