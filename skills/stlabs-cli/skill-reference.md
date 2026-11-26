@@ -440,6 +440,244 @@ Retrying:
 - Run it again only when the response says `retryable`, and with the same `--idempotency-key`.
 - After `outcome_unknown`, or on a 5xx response or a network failure, the change may have landed. Run `stlabs access roles members list <role>` first. If it finds nothing, ask the person before running it again, with a new key after `IDEMPOTENCY_OUTCOME_UNKNOWN`. The record can be on a later page, so read every page.
 
+## `analytics dashboards create`
+
+Create a dashboard with an Overview page
+
+Usage: `stlabs analytics dashboards create [flags] ['<body>'] [--idempotency-key <key>]`
+
+Required fields: `name`.
+
+Examples:
+
+```
+# Create a dashboard and its Overview page
+stlabs analytics dashboards create --name 'Support health'
+```
+
+Check read: `stlabs analytics dashboards list`.
+
+Retrying:
+
+- `stlabs` never retries this command itself.
+- Run it again only when the response says `retryable`, and with the same `--idempotency-key`.
+- After `outcome_unknown`, or on a 5xx response or a network failure, the change may have landed. Run `stlabs analytics dashboards list` first. If it finds nothing, ask the person before running it again, with a new key after `IDEMPOTENCY_OUTCOME_UNKNOWN`. The record can be on a later page, so read every page.
+- `WRITE_SUCCEEDED_READ_FAILED`: the change landed. Do not run it again.
+
+## `analytics dashboards delete`
+
+Delete a dashboard and its pages and panels
+
+Usage: `stlabs analytics dashboards delete <dashboard> [--idempotency-key <key>]`
+
+Examples:
+
+```
+# Delete a dashboard and its saved panels
+stlabs analytics dashboards delete 41
+```
+
+Check read: `stlabs analytics dashboards get <dashboard>`.
+
+Retrying:
+
+- `stlabs` never retries this command itself.
+- Run it again only when the response says `retryable`, and with the same `--idempotency-key`.
+- After `outcome_unknown`, or on a 5xx response or a network failure, the change may have landed. Run `stlabs analytics dashboards get <dashboard>` first. If it finds nothing, ask the person before running it again, with a new key after `IDEMPOTENCY_OUTCOME_UNKNOWN`.
+
+## `analytics dashboards get`
+
+Read a dashboard with all its pages and panels
+
+Usage: `stlabs analytics dashboards get <dashboard>`
+
+Examples:
+
+```
+# Inspect pages and panels
+stlabs analytics dashboards get 41
+```
+
+Retrying:
+
+- `stlabs` retries this read itself, so do not loop on it.
+- Try again later only when the response says `retryable`.
+
+## `analytics dashboards list`
+
+List dashboards you can open
+
+Usage: `stlabs analytics dashboards list`
+
+Examples:
+
+```
+# Find dashboards you created
+stlabs analytics dashboards list --scope mine --limit 25
+```
+
+Retrying:
+
+- `stlabs` retries this read itself, so do not loop on it.
+- Try again later only when the response says `retryable`.
+
+## `analytics dashboards rename`
+
+Rename a dashboard
+
+Usage: `stlabs analytics dashboards rename <dashboard> [flags] ['<body>'] [--idempotency-key <key>]`
+
+Required fields: `name`.
+
+Examples:
+
+```
+# Rename a dashboard
+stlabs analytics dashboards rename 41 --name 'Weekly support health'
+```
+
+Check read: `stlabs analytics dashboards get <dashboard>`.
+
+Retrying:
+
+- `stlabs` never retries this command itself.
+- Run it again only when the response says `retryable`, and with the same `--idempotency-key`.
+- After `outcome_unknown`, or on a 5xx response or a network failure, the change may have landed. Run `stlabs analytics dashboards get <dashboard>` first. If it finds nothing, ask the person before running it again, with a new key after `IDEMPOTENCY_OUTCOME_UNKNOWN`.
+- `WRITE_SUCCEEDED_READ_FAILED`: the change landed. Do not run it again.
+
+## `analytics pages list`
+
+List the pages of a dashboard
+
+Usage: `stlabs analytics pages list <dashboard>`
+
+Examples:
+
+```
+# Discover a destination page
+stlabs analytics pages list 41
+```
+
+Retrying:
+
+- `stlabs` retries this read itself, so do not loop on it.
+- Try again later only when the response says `retryable`.
+
+## `analytics panels create`
+
+Save a retained chart to a dashboard page
+
+Usage: `stlabs analytics panels create <dashboard> [flags] ['<body>'] [--idempotency-key <key>]`
+
+Required fields: `chart.agent_id`, `chart.thread_id`, `chart.version`, `chart.view_id`, `page`.
+
+Examples:
+
+```
+# Save a retained chart revision
+stlabs analytics panels create 41 --page 52 --chart 'agent-id=<agent id>' --chart 'thread-id=<thread id>' --chart 'view-id=<view id>' --chart version=0
+```
+
+Check read: `stlabs analytics dashboards get <dashboard>`.
+
+Retrying:
+
+- `stlabs` never retries this command itself.
+- Run it again only when the response says `retryable`, and with the same `--idempotency-key`.
+- After `outcome_unknown`, or on a 5xx response or a network failure, the change may have landed. Run `stlabs analytics dashboards get <dashboard>` first. If it finds nothing, ask the person before running it again, with a new key after `IDEMPOTENCY_OUTCOME_UNKNOWN`.
+- `WRITE_SUCCEEDED_READ_FAILED`: the change landed. Do not run it again.
+
+## `analytics panels delete`
+
+Delete a saved panel
+
+Usage: `stlabs analytics panels delete <dashboard> <panel> [--idempotency-key <key>]`
+
+Examples:
+
+```
+# Delete one saved panel
+stlabs analytics panels delete 41 73
+```
+
+Check read: `stlabs analytics panels get <dashboard> <panel>`.
+
+Retrying:
+
+- `stlabs` never retries this command itself.
+- Run it again only when the response says `retryable`, and with the same `--idempotency-key`.
+- After `outcome_unknown`, or on a 5xx response or a network failure, the change may have landed. Run `stlabs analytics panels get <dashboard> <panel>` first. If it finds nothing, ask the person before running it again, with a new key after `IDEMPOTENCY_OUTCOME_UNKNOWN`.
+
+## `analytics panels get`
+
+Read one saved panel
+
+Usage: `stlabs analytics panels get <dashboard> <panel>`
+
+Examples:
+
+```
+# Inspect a saved chart
+stlabs analytics panels get 41 73
+```
+
+Retrying:
+
+- `stlabs` retries this read itself, so do not loop on it.
+- Try again later only when the response says `retryable`.
+
+## `analytics panels position`
+
+Move or resize a saved panel
+
+Usage: `stlabs analytics panels position <dashboard> <panel> [flags] ['<body>'] [--idempotency-key <key>]`
+
+Required fields: none.
+
+Examples:
+
+```
+# Move and resize a panel
+stlabs analytics panels position 41 73 --page 52 --grid-y 8 --grid-w 12
+```
+
+Check read: `stlabs analytics panels get <dashboard> <panel>`.
+
+Retrying:
+
+- `stlabs` never retries this command itself.
+- Run it again only when the response says `retryable`, and with the same `--idempotency-key`.
+- After `outcome_unknown`, or on a 5xx response or a network failure, the change may have landed. Run `stlabs analytics panels get <dashboard> <panel>` first. If it finds nothing, ask the person before running it again, with a new key after `IDEMPOTENCY_OUTCOME_UNKNOWN`.
+- `WRITE_SUCCEEDED_READ_FAILED`: the change landed. Do not run it again.
+
+## `analytics panels update`
+
+Edit panel text or apply a retained chart or display change
+
+Usage: `stlabs analytics panels update <dashboard> <panel> [flags] ['<body>'] [--idempotency-key <key>]`
+
+Required fields: none.
+
+Conditional fields: `chart.agent_id` is required with `chart`; `chart.thread_id` is required with `chart`; `chart.version` is required with `chart`; `chart.view_id` is required with `chart`; `restyle.agent_id` is required with `restyle`; `restyle.thread_id` is required with `restyle`; `restyle.version` is required with `restyle`; `restyle.view_id` is required with `restyle`.
+
+Examples:
+
+```
+# Change a panel's title
+stlabs analytics panels update 41 73 --title 'Open tickets'
+# Apply a retained display patch
+stlabs analytics panels update 41 73 --restyle 'agent-id=<agent id>' --restyle 'thread-id=<thread id>' --restyle 'view-id=<view id>' --restyle version=0
+```
+
+Check read: `stlabs analytics panels get <dashboard> <panel>`.
+
+Retrying:
+
+- `stlabs` never retries this command itself.
+- Run it again only when the response says `retryable`, and with the same `--idempotency-key`.
+- After `outcome_unknown`, or on a 5xx response or a network failure, the change may have landed. Run `stlabs analytics panels get <dashboard> <panel>` first. If it finds nothing, ask the person before running it again, with a new key after `IDEMPOTENCY_OUTCOME_UNKNOWN`.
+- `WRITE_SUCCEEDED_READ_FAILED`: the change landed. Do not run it again.
+
 ## `approvals approve`
 
 Approve an approval
@@ -597,6 +835,198 @@ Retrying:
 - `stlabs` never retries this command itself.
 - Run it again only when the response says `retryable`, and with the same `--idempotency-key`.
 - After `outcome_unknown`, or on a 5xx response or a network failure, the change may have landed. Run `stlabs approvals get <approval>` first. If it finds nothing, ask the person before running it again, with a new key after `IDEMPOTENCY_OUTCOME_UNKNOWN`.
+
+## `knowledge documents content`
+
+Read knowledge document content
+
+Usage: `stlabs knowledge documents content <document>`
+
+Examples:
+
+```
+# Read a document and its content version
+stlabs knowledge documents content <document>
+```
+
+Retrying:
+
+- `stlabs` retries this read itself, so do not loop on it.
+- Try again later only when the response says `retryable`.
+
+## `knowledge documents delete`
+
+Delete a knowledge document
+
+Usage: `stlabs knowledge documents delete <document> [--idempotency-key <key>]`
+
+Examples:
+
+```
+# Delete an uploaded document
+stlabs knowledge documents delete <document>
+```
+
+Check read: `stlabs knowledge documents get <document>`.
+
+Retrying:
+
+- `stlabs` never retries this command itself.
+- Run it again only when the response says `retryable`, and with the same `--idempotency-key`.
+- After `outcome_unknown`, or on a 5xx response or a network failure, the change may have landed. Run `stlabs knowledge documents get <document>` first. If it finds nothing, ask the person before running it again, with a new key after `IDEMPOTENCY_OUTCOME_UNKNOWN`.
+- `WRITE_SUCCEEDED_READ_FAILED`: the change landed. Do not run it again.
+
+## `knowledge documents edit`
+
+Edit knowledge document content
+
+Usage: `stlabs knowledge documents edit <document> [flags] ['<body>'] [--idempotency-key <key>]`
+
+Required fields: `base_content_hash`, `content`.
+
+Examples:
+
+```
+# Replace the text using the version you just read
+stlabs knowledge documents edit <document> --base-content-hash <version> --content 'Sign in before connecting.'
+```
+
+Check read: `stlabs knowledge documents content <document>`.
+
+Retrying:
+
+- `stlabs` never retries this command itself.
+- Run it again only when the response says `retryable`, and with the same `--idempotency-key`.
+- After `outcome_unknown`, or on a 5xx response or a network failure, the change may have landed. Run `stlabs knowledge documents content <document>` first. If it finds nothing, ask the person before running it again, with a new key after `IDEMPOTENCY_OUTCOME_UNKNOWN`.
+- `WRITE_SUCCEEDED_READ_FAILED`: the change landed. Do not run it again.
+
+## `knowledge documents get`
+
+Get a knowledge document
+
+Usage: `stlabs knowledge documents get <document>`
+
+Examples:
+
+```
+# Check a document's processing status
+stlabs knowledge documents get <document>
+```
+
+Retrying:
+
+- `stlabs` retries this read itself, so do not loop on it.
+- Try again later only when the response says `retryable`.
+
+## `knowledge documents list`
+
+List knowledge documents
+
+Usage: `stlabs knowledge documents list`
+
+Examples:
+
+```
+# Find uploads that failed to process
+stlabs knowledge documents list --origin uploaded --status failed
+```
+
+Retrying:
+
+- `stlabs` retries this read itself, so do not loop on it.
+- Try again later only when the response says `retryable`.
+
+## `knowledge documents reprocess`
+
+Retry knowledge document processing
+
+Usage: `stlabs knowledge documents reprocess <document> [--idempotency-key <key>]`
+
+Examples:
+
+```
+# Retry a failed upload
+stlabs knowledge documents reprocess <document>
+```
+
+Check read: `stlabs knowledge documents get <document>`.
+
+Retrying:
+
+- `stlabs` never retries this command itself.
+- Run it again only when the response says `retryable`, and with the same `--idempotency-key`.
+- After `outcome_unknown`, or on a 5xx response or a network failure, the change may have landed. Run `stlabs knowledge documents get <document>` first. If it finds nothing, ask the person before running it again, with a new key after `IDEMPOTENCY_OUTCOME_UNKNOWN`.
+- `WRITE_SUCCEEDED_READ_FAILED`: the change landed. Do not run it again.
+
+## `knowledge documents revert`
+
+Restore original document content
+
+Usage: `stlabs knowledge documents revert <document> [--idempotency-key <key>]`
+
+Examples:
+
+```
+# Restore the original text
+stlabs knowledge documents revert <document>
+```
+
+Check read: `stlabs knowledge documents content <document>`.
+
+Retrying:
+
+- `stlabs` never retries this command itself.
+- Run it again only when the response says `retryable`, and with the same `--idempotency-key`.
+- After `outcome_unknown`, or on a 5xx response or a network failure, the change may have landed. Run `stlabs knowledge documents content <document>` first. If it finds nothing, ask the person before running it again, with a new key after `IDEMPOTENCY_OUTCOME_UNKNOWN`.
+- `WRITE_SUCCEEDED_READ_FAILED`: the change landed. Do not run it again.
+
+## `knowledge documents update`
+
+Update a knowledge document
+
+Usage: `stlabs knowledge documents update <document> [flags] ['<body>'] [--idempotency-key <key>]`
+
+Required fields: none.
+
+Examples:
+
+```
+# Rename a document
+stlabs knowledge documents update <document> --title 'VPN setup guide'
+```
+
+Check read: `stlabs knowledge documents get <document>`.
+
+Retrying:
+
+- `stlabs` never retries this command itself.
+- Run it again only when the response says `retryable`, and with the same `--idempotency-key`.
+- After `outcome_unknown`, or on a 5xx response or a network failure, the change may have landed. Run `stlabs knowledge documents get <document>` first. If it finds nothing, ask the person before running it again, with a new key after `IDEMPOTENCY_OUTCOME_UNKNOWN`.
+- `WRITE_SUCCEEDED_READ_FAILED`: the change landed. Do not run it again.
+
+## `knowledge documents upload`
+
+Save an uploaded file as knowledge
+
+Usage: `stlabs knowledge documents upload [flags] ['<body>'] [--idempotency-key <key>]`
+
+Required fields: `doc_type`, `file_id`.
+
+Examples:
+
+```
+# Save a file you uploaded as a runbook everyone gets answers from
+stlabs knowledge documents upload --file-id <file> --doc-type runbook 'who_gets_answers: [{kind: anyone}]'
+```
+
+Check read: `stlabs knowledge documents list`.
+
+Retrying:
+
+- `stlabs` never retries this command itself.
+- Run it again only when the response says `retryable`, and with the same `--idempotency-key`.
+- After `outcome_unknown`, or on a 5xx response or a network failure, the change may have landed. Run `stlabs knowledge documents list` first. If it finds nothing, ask the person before running it again, with a new key after `IDEMPOTENCY_OUTCOME_UNKNOWN`. The record can be on a later page, so read every page.
+- `WRITE_SUCCEEDED_READ_FAILED`: the change landed. Do not run it again.
 
 ## `people availability get`
 
@@ -814,6 +1244,155 @@ Retrying:
 - Run it again only when the response says `retryable`, and with the same `--idempotency-key`.
 - After `outcome_unknown`, or on a 5xx response or a network failure, the change may have landed. Run `stlabs queues get <queue>` first. If it finds nothing, ask the person before running it again, with a new key after `IDEMPOTENCY_OUTCOME_UNKNOWN`.
 
+## `queues timeoff add`
+
+Add your time off
+
+Usage: `stlabs queues timeoff add [flags] ['<body>'] [--idempotency-key <key>]`
+
+Required fields: `end`, `start`.
+
+Examples:
+
+```
+# Add a whole Friday off
+stlabs queues timeoff add --start 2026-12-04T00:00:00-05:00 --end 2026-12-05T00:00:00-05:00
+```
+
+Check read: `stlabs queues timeoff list`.
+
+Retrying:
+
+- `stlabs` never retries this command itself.
+- Run it again only when the response says `retryable`, and with the same `--idempotency-key`.
+- After `outcome_unknown`, or on a 5xx response or a network failure, the change may have landed. Run `stlabs queues timeoff list` first. If it finds nothing, ask the person before running it again, with a new key after `IDEMPOTENCY_OUTCOME_UNKNOWN`.
+
+## `queues timeoff cover clear`
+
+Return a queue to its usual routing while you are away
+
+Usage: `stlabs queues timeoff cover clear <time_off> <queue> [--idempotency-key <key>]`
+
+Examples:
+
+```
+# Restore the queue's usual routing
+stlabs queues timeoff cover clear <time-off> <queue>
+```
+
+Check read: `stlabs queues timeoff get <time_off>`.
+
+Retrying:
+
+- `stlabs` never retries this command itself.
+- Run it again only when the response says `retryable`, and with the same `--idempotency-key`.
+- After `outcome_unknown`, or on a 5xx response or a network failure, the change may have landed. Run `stlabs queues timeoff get <time_off>` first. If it finds nothing, ask the person before running it again, with a new key after `IDEMPOTENCY_OUTCOME_UNKNOWN`.
+
+## `queues timeoff cover set`
+
+Pick cover for one queue while you are away
+
+Usage: `stlabs queues timeoff cover set <time_off> <queue> [flags] ['<body>'] [--idempotency-key <key>]`
+
+Required fields: `kind`.
+
+Examples:
+
+```
+# Ask a teammate to cover one queue
+stlabs queues timeoff cover set <time-off> <queue> --kind person --person <person>
+# Use the queue lead as cover
+stlabs queues timeoff cover set <time-off> <queue> --kind queue_lead
+```
+
+Check read: `stlabs queues timeoff get <time_off>`.
+
+Retrying:
+
+- `stlabs` never retries this command itself.
+- Run it again only when the response says `retryable`, and with the same `--idempotency-key`.
+- After `outcome_unknown`, or on a 5xx response or a network failure, the change may have landed. Run `stlabs queues timeoff get <time_off>` first. If it finds nothing, ask the person before running it again, with a new key after `IDEMPOTENCY_OUTCOME_UNKNOWN`.
+
+## `queues timeoff get`
+
+Get your time off and its cover
+
+Usage: `stlabs queues timeoff get <time_off>`
+
+Examples:
+
+```
+# Read a saved entry and its cover
+stlabs queues timeoff get <time-off>
+```
+
+Retrying:
+
+- `stlabs` retries this read itself, so do not loop on it.
+- Try again later only when the response says `retryable`.
+
+## `queues timeoff list`
+
+List your time off
+
+Usage: `stlabs queues timeoff list`
+
+Examples:
+
+```
+# List your entries overlapping Friday
+stlabs queues timeoff list --start 2026-12-04T00:00:00-05:00 --end 2026-12-05T00:00:00-05:00
+```
+
+Retrying:
+
+- `stlabs` retries this read itself, so do not loop on it.
+- Try again later only when the response says `retryable`.
+
+## `queues timeoff remove`
+
+Remove or end your time off
+
+Usage: `stlabs queues timeoff remove <time_off> [--idempotency-key <key>]`
+
+Examples:
+
+```
+# Remove future time off or end current time off
+stlabs queues timeoff remove <time-off>
+```
+
+Check read: `stlabs queues timeoff get <time_off>`.
+
+Retrying:
+
+- `stlabs` never retries this command itself.
+- Run it again only when the response says `retryable`, and with the same `--idempotency-key`.
+- After `outcome_unknown`, or on a 5xx response or a network failure, the change may have landed. Run `stlabs queues timeoff get <time_off>` first. If it finds nothing, ask the person before running it again, with a new key after `IDEMPOTENCY_OUTCOME_UNKNOWN`.
+
+## `queues timeoff update`
+
+Change your time off
+
+Usage: `stlabs queues timeoff update <time_off> [flags] ['<body>'] [--idempotency-key <key>]`
+
+Required fields: `end`, `start`.
+
+Examples:
+
+```
+# Change the dates and note on your entry
+stlabs queues timeoff update <time-off> --start 2026-12-04T00:00:00-05:00 --end 2026-12-05T00:00:00-05:00 --note 'Out Friday'
+```
+
+Check read: `stlabs queues timeoff get <time_off>`.
+
+Retrying:
+
+- `stlabs` never retries this command itself.
+- Run it again only when the response says `retryable`, and with the same `--idempotency-key`.
+- After `outcome_unknown`, or on a 5xx response or a network failure, the change may have landed. Run `stlabs queues timeoff get <time_off>` first. If it finds nothing, ask the person before running it again, with a new key after `IDEMPOTENCY_OUTCOME_UNKNOWN`.
+
 ## `queues update`
 
 Change a queue
@@ -851,6 +1430,8 @@ Change many tickets at once
 Usage: `stlabs tickets bulk update [flags] ['<body>'] [--idempotency-key <key>]`
 
 Required fields: `tickets`.
+
+Conditional fields: at least one of `priority`, `assignee`, `queue`.
 
 Examples:
 
@@ -1114,6 +1695,62 @@ Retrying:
 - `stlabs` never retries this command itself.
 - Run it again only when the response says `retryable`, and with the same `--idempotency-key`.
 - After `outcome_unknown`, or on a 5xx response or a network failure, the change may have landed. Run `stlabs tickets filters list` first. If it finds nothing, ask the person before running it again, with a new key after `IDEMPOTENCY_OUTCOME_UNKNOWN`.
+
+## `tickets followers add`
+
+Add followers to a ticket
+
+Usage: `stlabs tickets followers add <ticket> [flags] ['<body>'] [--idempotency-key <key>]`
+
+Required fields: none.
+
+Conditional fields: at least one of `people`, `emails`.
+
+Examples:
+
+```
+# Add someone to a ticket's followers
+stlabs tickets followers add <ticket> --people '<person id>'
+# Add someone to a ticket's followers by email
+stlabs tickets followers add <ticket> --emails '<email>'
+```
+
+Check read: `stlabs tickets get <ticket>`.
+
+Retrying:
+
+- `stlabs` never retries this command itself.
+- Run it again only when the response says `retryable`, and with the same `--idempotency-key`.
+- After `outcome_unknown`, or on a 5xx response or a network failure, the change may have landed. Run `stlabs tickets get <ticket>` first. If it finds nothing, ask the person before running it again, with a new key after `IDEMPOTENCY_OUTCOME_UNKNOWN`.
+- `WRITE_SUCCEEDED_READ_FAILED`: the change landed. Do not run it again.
+
+## `tickets followers remove`
+
+Remove followers from a ticket
+
+Usage: `stlabs tickets followers remove <ticket> [flags] ['<body>'] [--idempotency-key <key>]`
+
+Required fields: none.
+
+Conditional fields: at least one of `people`, `emails`.
+
+Examples:
+
+```
+# Take someone off a ticket's followers
+stlabs tickets followers remove <ticket> --people '<person id>'
+# Take someone off a ticket's followers by email
+stlabs tickets followers remove <ticket> --emails '<email>'
+```
+
+Check read: `stlabs tickets get <ticket>`.
+
+Retrying:
+
+- `stlabs` never retries this command itself.
+- Run it again only when the response says `retryable`, and with the same `--idempotency-key`.
+- After `outcome_unknown`, or on a 5xx response or a network failure, the change may have landed. Run `stlabs tickets get <ticket>` first. If it finds nothing, ask the person before running it again, with a new key after `IDEMPOTENCY_OUTCOME_UNKNOWN`.
+- `WRITE_SUCCEEDED_READ_FAILED`: the change landed. Do not run it again.
 
 ## `tickets get`
 
